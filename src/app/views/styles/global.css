@@ -1,0 +1,242 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+  color: #1f2937;
+  background: radial-gradient(circle at 8% 9%, #e8f0ff 0%, #f5f8fc 35%, #f7fafc 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 18px 50px rgba(23, 43, 77, 0.09);
+}
+
+.photo-library-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 360px;
+  gap: 1rem;
+  min-height: calc(100vh - 2rem);
+}
+
+.sidebar,
+.details-pane,
+.gallery-toolbar,
+.gallery-grid {
+  border-radius: 24px;
+}
+
+.sidebar {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sidebar h1 {
+  margin: 0;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  border: 1px solid #d5dbe7;
+  background: #fff;
+}
+
+.search-box input {
+  border: 0;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sidebar button,
+.density-switcher button,
+.detail-tabs button {
+  font: inherit;
+  border: 0;
+  background: transparent;
+  color: #3f4d63;
+  border-radius: 12px;
+  padding: 0.65rem 0.9rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sidebar button.active {
+  color: #1854d9;
+  background: linear-gradient(90deg, rgba(24, 84, 217, 0.16), rgba(24, 84, 217, 0.03));
+}
+
+.gallery-zone {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1rem;
+}
+
+.gallery-toolbar {
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.density-switcher {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.3rem;
+  border-radius: 12px;
+  background: #eff3fc;
+}
+
+.density-switcher button {
+  text-transform: capitalize;
+  padding: 0.35rem 0.75rem;
+}
+
+.density-switcher button.active {
+  color: #fff;
+  background: linear-gradient(120deg, #1f69ff, #5d8fff);
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.photo-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 8px 20px rgba(2, 14, 43, 0.12);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-card .overlay {
+  position: absolute;
+  inset: auto 0 0;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.58));
+  color: #fff;
+  padding: 1.15rem 0.8rem 0.75rem;
+}
+
+.photo-card .overlay h3 {
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+}
+
+.photo-card.selected {
+  border-color: #3374ff;
+}
+
+.details-pane {
+  padding: 1.2rem;
+  overflow-y: auto;
+}
+
+.detail-hero {
+  width: 100%;
+  border-radius: 20px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.detail-tabs {
+  margin-top: 0.9rem;
+  display: flex;
+  border-bottom: 1px solid #d8e0ef;
+}
+
+.detail-tabs button {
+  border-radius: 0;
+  padding: 0.6rem 1rem;
+}
+
+.detail-tabs button.active {
+  color: #225ce1;
+  border-bottom: 2px solid #225ce1;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 1rem 0 0;
+  gap: 0.25rem;
+}
+
+dt {
+  margin-top: 0.55rem;
+  color: #637086;
+  font-weight: 600;
+}
+
+dd {
+  margin: 0;
+  color: #1d2a41;
+  font-size: 1.05rem;
+}
+
+.palette {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.palette span {
+  inline-size: 26px;
+  block-size: 26px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(26, 33, 54, 0.1);
+}
+
+@media (max-width: 1220px) {
+  .photo-library-layout {
+    grid-template-columns: 250px 1fr;
+  }
+
+  .details-pane {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 840px) {
+  .photo-library-layout {
+    grid-template-columns: 1fr;
+  }
+}
